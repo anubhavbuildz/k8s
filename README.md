@@ -43,8 +43,8 @@ graph TD
         WorkerSetup
     end
 
-    style Main fill:#fff,stroke:#333,stroke-width:4px
-    style Role fill:#fff,stroke:#333,stroke-dasharray: 5 5
+    style Main fill:black,stroke:#333,stroke-width:4px
+    style Role fill:black,stroke:#333,stroke-dasharray: 5 5
 ```
 
 The project has been modularized for better maintainability:
