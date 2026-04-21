@@ -5,6 +5,23 @@ JOIN_CMD_FILE="/tmp/kubeadm_join_cmd.sh"
 K8S_VERSION="1.29"
 CALICO_VERSION="v3.27.3"
 
+# Default runtime
+RUNTIME=${RUNTIME:-"containerd"}
+
+get_cri_socket() {
+    case $RUNTIME in
+        "docker")
+            echo "unix:///var/run/cri-dockerd.sock"
+            ;;
+        "podman")
+            echo "unix:///var/run/crio/crio.sock"
+            ;;
+        "containerd"|*)
+            echo "unix:///run/containerd/containerd.sock"
+            ;;
+    esac
+}
+
 # Colors for logging
 RED='\033[0;31m'
 GREEN='\033[0;32m'

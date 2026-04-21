@@ -18,6 +18,8 @@ fi
 
 ROLE=$1
 MASTER_IP=$2
+# Optional runtime argument (default handled in common.sh)
+export RUNTIME=${3:-$RUNTIME}
 
 # Check if running as root
 check_root
@@ -29,8 +31,9 @@ echo "=============================="
 if [[ "$ROLE" != "master" && "$ROLE" != "worker" ]]; then
     log_error "Invalid or missing role."
     echo "Usage:"
-    echo "  Master: sudo $0 master"
-    echo "  Worker: sudo $0 worker <MASTER-IP>"
+    echo "  On Master: sudo $0 master [MASTER_IP] [containerd|docker]"
+    echo "  On Worker: sudo $0 worker <MASTER_IP> [containerd|docker]"
+    log_info "Default runtime: containerd"
     exit 1
 fi
 

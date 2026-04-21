@@ -24,7 +24,7 @@ if [[ -z "$JOIN_CMD" ]]; then
 fi
 
 log_info "Executing join command..."
-eval "sudo $JOIN_CMD"
+eval "sudo $JOIN_CMD --cri-socket=$(get_cri_socket)"
 
 echo
 echo "=================================="

@@ -11,7 +11,8 @@ ADVERTISE_ADDR=$(hostname -I | awk '{print $1}')
 
 kubeadm init \
     --pod-network-cidr=192.168.0.0/16 \
-    --apiserver-advertise-address=$ADVERTISE_ADDR
+    --apiserver-advertise-address=$ADVERTISE_ADDR \
+    --cri-socket=$(get_cri_socket)
 
 log_info "Configuring kubectl for the current user..."
 mkdir -p $HOME/.kube
