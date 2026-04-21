@@ -17,9 +17,14 @@ else
 fi
 
 ROLE=$1
-MASTER_IP=$2
-# Optional runtime argument (default handled in common.sh)
-export RUNTIME=${3:-$RUNTIME}
+# Smart argument parsing: If $2 is a runtime name, treat it as RUNTIME and clear MASTER_IP for local detection
+if [[ "$2" == "docker" || "$2" == "containerd" ]]; then
+    export RUNTIME=$2
+    MASTER_IP=""
+else
+    MASTER_IP=$2
+    export RUNTIME=${3:-$RUNTIME}
+fi
 
 # Check if running as root
 check_root
