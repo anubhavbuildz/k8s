@@ -8,6 +8,10 @@ K8-Simplified is a lightweight, automated bash utility designed to bootstrap a p
 
 ---
 
+<p align="center">
+<img src="https://skillicons.dev/icons?i=linux,docker,kubernetes,bash,rhel"/>
+</p>
+
 ## ✨ Features
 
 - **Automated Preparation**: Automatically handles swap disabling, kernel module loading (`overlay`, `br_netfilter`), and `sysctl` network configuration.
